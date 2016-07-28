@@ -22,6 +22,17 @@ var HeroService = (function () {
             .then(this.extractData)
             .catch(this.handleError);
     };
+    HeroService.prototype.addHero = function (hero) {
+        var headers = new http_1.Headers({
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+        });
+        return this.http
+            .post(this.heroesUrl, JSON.stringify(hero), { headers: headers })
+            .toPromise()
+            .then(this.extractData)
+            .catch(this.handleError);
+    };
     HeroService.prototype.extractData = function (res) {
         console.log(res);
         var body = res.json();

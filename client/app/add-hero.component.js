@@ -9,24 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
 var hero_service_1 = require('./hero.service');
 var hero_1 = require('./hero');
-var AppComponent = (function () {
-    function AppComponent() {
-        this.title = 'Tour of Heroes';
+var AddHeroComponent = (function () {
+    function AddHeroComponent(hero, heroService) {
+        this.hero = hero;
+        this.heroService = heroService;
     }
-    AppComponent = __decorate([
+    AddHeroComponent.prototype.addHero = function () {
+        this.heroService.addHero(this.hero);
+        this.hero.id = null;
+        this.hero.name = null;
+    };
+    AddHeroComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            templateUrl: '/app/home-routers.html',
-            styleUrls: ['app/app.component.css'],
-            directives: [router_1.ROUTER_DIRECTIVES],
-            providers: [hero_service_1.HeroService, hero_1.Hero]
+            selector: 'add-hero',
+            templateUrl: '/app/add-hero.html'
         }), 
-        __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+        __metadata('design:paramtypes', [hero_1.Hero, hero_service_1.HeroService])
+    ], AddHeroComponent);
+    return AddHeroComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.AddHeroComponent = AddHeroComponent;
+//# sourceMappingURL=add-hero.component.js.map

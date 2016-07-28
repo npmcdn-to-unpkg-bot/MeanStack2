@@ -15,7 +15,7 @@ var HeroesComponent = (function () {
     function HeroesComponent(router, heroService) {
         this.router = router;
         this.heroService = heroService;
-        this.title = 'Hero Display!';
+        this.title = 'Complete Patient List';
     }
     HeroesComponent.prototype.ngOnInit = function () {
         this.getHeros();

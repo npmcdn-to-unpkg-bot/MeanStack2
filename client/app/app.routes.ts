@@ -1,19 +1,24 @@
 import {provideRouter, RouterConfig} from '@angular/router';
 import {HeroesComponent} from './heroes.component';
 import {AddHeroComponent} from './add-hero.component';
+import {HeroesSearchComponent} from './search-heroes.component';
 
 const routes : RouterConfig = [
   {
-    path : 'heroes',
+    path : 'patients',
     component : HeroesComponent
   },
   {
-    path : 'addHero',
+    path : 'addPatient',
     component : AddHeroComponent
   },
   {
+    path : 'searchPatients',
+    component : HeroesSearchComponent
+  },
+  {
     path : '',
-    redirectTo :'/heroes',
+    redirectTo :'/patients',
     pathMatch: 'full'
   }
 ];

@@ -15,6 +15,14 @@ export class HeroService {
             .catch(this.handleError);
     }
 
+    testHeroes(term) {
+        console.log(term);
+        return this.http.get(this.heroesUrl)
+            .toPromise()
+            .then(this.extractData)
+            .catch(this.handleError);
+    }
+
     addHero(hero: Hero) {
         let headers = new Headers({
             'Content-Type': 'application/json'

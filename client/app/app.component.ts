@@ -12,5 +12,5 @@ import {Hero} from './hero';
 })
 
 export class AppComponent{
-  title = 'Tour of Heroes';
+  title = 'Patient Data';
 }

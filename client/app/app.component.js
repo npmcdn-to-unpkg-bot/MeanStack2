@@ -14,7 +14,7 @@ var hero_service_1 = require('./hero.service');
 var hero_1 = require('./hero');
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = 'Tour of Heroes';
+        this.title = 'Patient Data';
     }
     AppComponent = __decorate([
         core_1.Component({

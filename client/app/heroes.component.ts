@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 })
 
 export class HeroesComponent implements OnInit {
-    title = 'Hero Display!';
+    title = 'Complete Patient List';
     heros: Hero[];
     selectedHero: Hero;
 

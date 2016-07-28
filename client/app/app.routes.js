@@ -2,18 +2,23 @@
 var router_1 = require('@angular/router');
 var heroes_component_1 = require('./heroes.component');
 var add_hero_component_1 = require('./add-hero.component');
+var search_heroes_component_1 = require('./search-heroes.component');
 var routes = [
     {
-        path: 'heroes',
+        path: 'patients',
         component: heroes_component_1.HeroesComponent
     },
     {
-        path: 'addHero',
+        path: 'addPatient',
         component: add_hero_component_1.AddHeroComponent
     },
     {
+        path: 'searchPatients',
+        component: search_heroes_component_1.HeroesSearchComponent
+    },
+    {
         path: '',
-        redirectTo: '/heroes',
+        redirectTo: '/patients',
         pathMatch: 'full'
     }
 ];

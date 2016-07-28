@@ -17,8 +17,7 @@ export class HeroService {
 
     addHero(hero: Hero) {
         let headers = new Headers({
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
+            'Content-Type': 'application/json'
         });
 
         return this.http

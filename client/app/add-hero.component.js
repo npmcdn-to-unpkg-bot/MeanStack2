@@ -16,6 +16,10 @@ var AddHeroComponent = (function () {
         this.hero = hero;
         this.heroService = heroService;
     }
+    AddHeroComponent.prototype.ngOnInit = function () {
+        this.hero.id = null;
+        this.hero.name = null;
+    };
     AddHeroComponent.prototype.addHero = function () {
         this.heroService.addHero(this.hero);
         this.hero.id = null;

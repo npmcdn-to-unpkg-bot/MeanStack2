@@ -24,8 +24,7 @@ var HeroService = (function () {
     };
     HeroService.prototype.addHero = function (hero) {
         var headers = new http_1.Headers({
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
+            'Content-Type': 'application/json'
         });
         return this.http
             .post(this.heroesUrl, JSON.stringify(hero), { headers: headers })

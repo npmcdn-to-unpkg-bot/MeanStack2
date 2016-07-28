@@ -9,6 +9,20 @@ function getHeroes(res) {
     });
 };
 
+function searchHero(search_term, res){
+    Heroes.find(
+      { $text : { $search : search_term } },
+      {score : { $meta : "textScore" } }
+    )
+    .sort({ score : { $meta : "textScore"} })
+    .exec( function(err, heroes){
+      if(err){
+        res.send(err);
+      }
+      res.json(heroes);
+    });
+};
+
 module.exports = function(app) {
 
     app.use(function(req, res, next) {
@@ -22,10 +36,17 @@ module.exports = function(app) {
         getHeroes(res);
     });
 
+    app.get('/api/heroes/:search_term', function(req, res, next) {
+      if(req.params.search_term){
+        searchHero(req.params.search_term, res);
+      }
+    });
+
     app.post('/api/heroes', function(req, res, next) {
         Heroes.create({
             id: req.body.id,
-            name: req.body.name
+            name: req.body.name,
+            address : req.body.address
         }, function(err, hero) {
             if (err)
                 res.send(err);

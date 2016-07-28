@@ -14,11 +14,13 @@ export class AddHeroComponent implements OnInit{
   ngOnInit(){
     this.hero.id = null;
     this.hero.name = null;
+    this.hero.address = null;
   }
 
   addHero(){
     this.heroService.addHero(this.hero);
     this.hero.id = null;
     this.hero.name = null;
+    this.hero.address = null;
   }
 }

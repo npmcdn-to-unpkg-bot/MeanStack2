@@ -22,6 +22,10 @@ export class HeroesSearchComponent {
       this.items = this.term.valueChanges
           .debounceTime(400)
           .distinctUntilChanged()
-          .switchMap(term => this.heroService.testHeroes(term));
+          .switchMap(term => this.searchHero(term));
+    }
+
+    searchHero(term){
+      return  term !== "" ? this.heroService.testHeroes(term) : Observable.of([]);
     }
 }

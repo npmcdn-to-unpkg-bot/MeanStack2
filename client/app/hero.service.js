@@ -23,8 +23,7 @@ var HeroService = (function () {
             .catch(this.handleError);
     };
     HeroService.prototype.testHeroes = function (term) {
-        console.log(term);
-        return this.http.get(this.heroesUrl)
+        return this.http.get(this.heroesUrl + '/' + term)
             .toPromise()
             .then(this.extractData)
             .catch(this.handleError);
@@ -40,7 +39,6 @@ var HeroService = (function () {
             .catch(this.handleError);
     };
     HeroService.prototype.extractData = function (res) {
-        console.log(res);
         var body = res.json();
         return body;
     };

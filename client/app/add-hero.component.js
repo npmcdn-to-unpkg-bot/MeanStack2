@@ -19,11 +19,13 @@ var AddHeroComponent = (function () {
     AddHeroComponent.prototype.ngOnInit = function () {
         this.hero.id = null;
         this.hero.name = null;
+        this.hero.address = null;
     };
     AddHeroComponent.prototype.addHero = function () {
         this.heroService.addHero(this.hero);
         this.hero.id = null;
         this.hero.name = null;
+        this.hero.address = null;
     };
     AddHeroComponent = __decorate([
         core_1.Component({

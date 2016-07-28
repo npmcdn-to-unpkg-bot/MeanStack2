@@ -16,8 +16,7 @@ export class HeroService {
     }
 
     testHeroes(term) {
-        console.log(term);
-        return this.http.get(this.heroesUrl)
+        return this.http.get(this.heroesUrl + '/' + term)
             .toPromise()
             .then(this.extractData)
             .catch(this.handleError);
@@ -36,7 +35,6 @@ export class HeroService {
     }
 
     private extractData(res: Response) {
-        console.log(res);
         let body = res.json();
         return body as Hero[];
     }

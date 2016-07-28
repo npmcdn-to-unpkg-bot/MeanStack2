@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
+var Observable_1 = require('rxjs/Observable');
 require('rxjs/Rx');
 require('rxjs/add/operator/debounceTime');
 require('rxjs/add/operator/distinctUntilChanged');
@@ -23,8 +24,11 @@ var HeroesSearchComponent = (function () {
         this.items = this.term.valueChanges
             .debounceTime(400)
             .distinctUntilChanged()
-            .switchMap(function (term) { return _this.heroService.testHeroes(term); });
+            .switchMap(function (term) { return _this.searchHero(term); });
     }
+    HeroesSearchComponent.prototype.searchHero = function (term) {
+        return term !== "" ? this.heroService.testHeroes(term) : Observable_1.Observable.of([]);
+    };
     HeroesSearchComponent = __decorate([
         core_1.Component({
             selector: 'hero-search',

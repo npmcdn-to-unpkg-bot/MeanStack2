@@ -23,6 +23,7 @@ var HeroService = (function () {
             .catch(this.handleError);
     };
     HeroService.prototype.extractData = function (res) {
+        console.log(res);
         var body = res.json();
         return body;
     };

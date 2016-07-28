@@ -5,6 +5,8 @@ function getHeroes(res) {
         if (err) {
             res.send(err);
         }
+        res.set('Content-Type', 'application/json');
+        res.set('Access-Control-Allow-Origin', '*');
         res.json(heroes);
     });
 };

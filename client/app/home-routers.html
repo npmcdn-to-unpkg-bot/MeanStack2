@@ -1,7 +1,6 @@
 <h1>{{title}}</h1>
 <nav>
-  <a [routerLink] = "['/patients']" routerLinkActive="active">Patients</a>
-  <a [routerLink] = "['/addPatient']" routerLinkActive="active">Add Patient</a>
-  <a [routerLink] = "['/searchPatients']" routerLinkActive="active">Search Patients</a>
+    <a [routerLink]="['/searchPatients']" routerLinkActive="active">Search Patients</a>
+    <a [routerLink]="['/addPatient']" routerLinkActive="active">Add Patient</a>
 </nav>
 <router-outlet></router-outlet>

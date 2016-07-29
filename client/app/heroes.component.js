@@ -15,10 +15,8 @@ var HeroesComponent = (function () {
     function HeroesComponent(router, heroService) {
         this.router = router;
         this.heroService = heroService;
-        this.title = 'Complete Patient List';
     }
     HeroesComponent.prototype.ngOnInit = function () {
-        this.getHeros();
     };
     HeroesComponent.prototype.getHeros = function () {
         var _this = this;
@@ -27,6 +25,14 @@ var HeroesComponent = (function () {
     HeroesComponent.prototype.onSelect = function (hero) {
         this.selectedHero = hero;
     };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], HeroesComponent.prototype, "title", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Array)
+    ], HeroesComponent.prototype, "heros", void 0);
     HeroesComponent = __decorate([
         core_1.Component({
             selector: 'my-heroes',

@@ -10,29 +10,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
-var Observable_1 = require('rxjs/Observable');
 require('rxjs/Rx');
 require('rxjs/add/operator/debounceTime');
 require('rxjs/add/operator/distinctUntilChanged');
 require('rxjs/add/operator/switchMap');
+var heroes_component_1 = require('./heroes.component');
 var hero_service_1 = require('./hero.service');
 var HeroesSearchComponent = (function () {
     function HeroesSearchComponent(heroService) {
         var _this = this;
         this.heroService = heroService;
         this.term = new common_1.Control();
-        this.items = this.term.valueChanges
+        this.title = '';
+        this.term.valueChanges
             .debounceTime(400)
             .distinctUntilChanged()
-            .switchMap(function (term) { return _this.searchHero(term); });
+            .switchMap(function (term) { return _this.searchHero(term); })
+            .subscribe(function (data) { return _this.setValues(data); });
     }
     HeroesSearchComponent.prototype.searchHero = function (term) {
-        return term !== "" ? this.heroService.testHeroes(term) : Observable_1.Observable.of([]);
+        if (term !== "") {
+            this.title = 'Search results: ';
+            return this.heroService.testHeroes(term);
+        }
+        this.title = '';
+        return Promise.resolve([]);
+    };
+    HeroesSearchComponent.prototype.setValues = function (data) {
+        this.items = data;
     };
     HeroesSearchComponent = __decorate([
         core_1.Component({
             selector: 'hero-search',
-            templateUrl: '/app/heroes-search.html'
+            templateUrl: '/app/heroes-search.html',
+            directives: [heroes_component_1.HeroesComponent]
         }), 
         __metadata('design:paramtypes', [hero_service_1.HeroService])
     ], HeroesSearchComponent);

@@ -5,10 +5,6 @@ import {HeroesSearchComponent} from './search-heroes.component';
 
 const routes : RouterConfig = [
   {
-    path : 'patients',
-    component : HeroesComponent
-  },
-  {
     path : 'addPatient',
     component : AddHeroComponent
   },
@@ -18,7 +14,7 @@ const routes : RouterConfig = [
   },
   {
     path : '',
-    redirectTo :'/patients',
+    redirectTo :'/searchPatients',
     pathMatch: 'full'
   }
 ];

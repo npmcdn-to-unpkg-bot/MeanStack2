@@ -11,18 +11,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var hero_service_1 = require('./hero.service');
 var hero_1 = require('./hero');
+var heroes_component_1 = require('./heroes.component');
 var AddHeroComponent = (function () {
     function AddHeroComponent(hero, heroService) {
         this.hero = hero;
         this.heroService = heroService;
+        this.title = "Patient List";
     }
     AddHeroComponent.prototype.ngOnInit = function () {
         this.hero.id = null;
         this.hero.name = null;
         this.hero.address = null;
+        this.getHeroes();
+    };
+    AddHeroComponent.prototype.getHeroes = function () {
+        var _this = this;
+        this.heroService.getHeroes().then(function (heros) { return _this.heroes = heros; });
     };
     AddHeroComponent.prototype.addHero = function () {
         this.heroService.addHero(this.hero);
+        this.getHeroes();
         this.hero.id = null;
         this.hero.name = null;
         this.hero.address = null;
@@ -30,7 +38,8 @@ var AddHeroComponent = (function () {
     AddHeroComponent = __decorate([
         core_1.Component({
             selector: 'add-hero',
-            templateUrl: '/app/add-hero.html'
+            templateUrl: '/app/add-hero.html',
+            directives: [heroes_component_1.HeroesComponent]
         }), 
         __metadata('design:paramtypes', [hero_1.Hero, hero_service_1.HeroService])
     ], AddHeroComponent);

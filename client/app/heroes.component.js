@@ -18,10 +18,6 @@ var HeroesComponent = (function () {
     }
     HeroesComponent.prototype.ngOnInit = function () {
     };
-    HeroesComponent.prototype.getHeros = function () {
-        var _this = this;
-        this.heroService.getHeroes().then(function (heros) { return _this.heros = heros; });
-    };
     HeroesComponent.prototype.onSelect = function (hero) {
         this.selectedHero = hero;
     };

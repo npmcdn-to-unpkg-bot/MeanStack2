@@ -31,7 +31,7 @@ var HeroesSearchComponent = (function () {
     HeroesSearchComponent.prototype.searchHero = function (term) {
         if (term !== "") {
             this.title = 'Search results: ';
-            return this.heroService.testHeroes(term);
+            return this.heroService.searchHeroes(term);
         }
         this.title = '';
         return Promise.resolve([]);

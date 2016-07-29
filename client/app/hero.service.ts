@@ -6,7 +6,7 @@ import { Observable }     from 'rxjs/Observable';
 
 @Injectable()
 export class HeroService {
-    private heroesUrl = 'http://localhost:8080/api/heroes';  // URL to web api
+    private heroesUrl = 'http://localhost:8080/api/heroes';
     constructor(private http: Http) { }
     getHeroes() {
         return this.http.get(this.heroesUrl)
@@ -15,7 +15,15 @@ export class HeroService {
             .catch(this.handleError);
     }
 
-    testHeroes(term) {
+    getHero(id : string){
+      return this.http.get(this.heroesUrl + '/detail/' + id)
+          .toPromise()
+          .then(this.getHeroData)
+          .catch(this.handleError);
+
+    }
+
+    searchHeroes(term) {
         return this.http.get(this.heroesUrl + '/' + term)
             .toPromise()
             .then(this.extractData)
@@ -32,6 +40,11 @@ export class HeroService {
             .toPromise()
             .then(this.extractData)
             .catch(this.handleError);
+    }
+
+    private getHeroData(res : Response){
+      let body = res.json();
+      return body as Hero;
     }
 
     private extractData(res: Response) {

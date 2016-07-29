@@ -14,7 +14,7 @@ require('rxjs/add/operator/toPromise');
 var HeroService = (function () {
     function HeroService(http) {
         this.http = http;
-        this.heroesUrl = 'http://localhost:8080/api/heroes'; // URL to web api
+        this.heroesUrl = 'http://localhost:8080/api/heroes';
     }
     HeroService.prototype.getHeroes = function () {
         return this.http.get(this.heroesUrl)
@@ -22,7 +22,13 @@ var HeroService = (function () {
             .then(this.extractData)
             .catch(this.handleError);
     };
-    HeroService.prototype.testHeroes = function (term) {
+    HeroService.prototype.getHero = function (id) {
+        return this.http.get(this.heroesUrl + '/detail/' + id)
+            .toPromise()
+            .then(this.getHeroData)
+            .catch(this.handleError);
+    };
+    HeroService.prototype.searchHeroes = function (term) {
         return this.http.get(this.heroesUrl + '/' + term)
             .toPromise()
             .then(this.extractData)
@@ -37,6 +43,10 @@ var HeroService = (function () {
             .toPromise()
             .then(this.extractData)
             .catch(this.handleError);
+    };
+    HeroService.prototype.getHeroData = function (res) {
+        var body = res.json();
+        return body;
     };
     HeroService.prototype.extractData = function (res) {
         var body = res.json();

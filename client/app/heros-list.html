@@ -1,16 +1,6 @@
 <h2>{{title}}</h2>
 <ul class="heroes">
-    <li *ngFor="let hero of heros" [class.selected]="hero === selectedHero" (click)="onSelect(hero)">
+    <li *ngFor="let hero of heros" (click)="onSelect(hero)">
         <span class="Badge">{{hero.id}}</span> {{hero.name}}
     </li>
 </ul>
-<div *ngIf="selectedHero">
-  <h3>
-    Seleted Patient Details
-  </h3>
-  <b>id: </b> {{selectedHero.id}}
-  <br/><br/>
-  <b>Name: </b> {{selectedHero.name}}
-  <br/><br/>
-  <b>Name: </b> {{selectedHero.address}}
-</div>

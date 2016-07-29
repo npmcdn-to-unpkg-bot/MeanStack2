@@ -1,0 +1,12 @@
+<div *ngIf="hero">
+  <h3>
+    Seleted Patient Details
+  </h3>
+  <b>id: </b> {{hero.id}}
+  <br/><br/>
+  <b>Name: </b> {{hero.name}}
+  <br/><br/>
+  <b>Address: </b> {{hero.address}}
+  <br/><br/>
+  <button (click)="goBack()"> Back </button>
+</div>

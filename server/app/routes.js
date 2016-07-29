@@ -9,6 +9,15 @@ function getHeroes(res) {
     });
 };
 
+function getHeroDetail(id, res) {
+    Heroes.findOne( {id : id}, function(err, hero) {
+        if (err) {
+            res.send(err);
+        }
+        res.json(hero);
+    });
+};
+
 function searchHero(search_term, res){
     Heroes.find(
       { $text : { $search : search_term } },
@@ -34,6 +43,12 @@ module.exports = function(app) {
 
     app.get('/api/heroes', function(req, res, next) {
         getHeroes(res);
+    });
+
+    app.get('/api/heroes/detail/:id', function(req, res, next) {
+      if(req.params.id){
+        getHeroDetail(req.params.id, res);
+      }
     });
 
     app.get('/api/heroes/:search_term', function(req, res, next) {

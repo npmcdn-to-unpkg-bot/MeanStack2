@@ -29,7 +29,10 @@ var AddHeroComponent = (function () {
         this.heroService.getHeroes().then(function (heros) { return _this.heroes = heros; });
     };
     AddHeroComponent.prototype.addHero = function () {
-        this.heroService.addHero(this.hero);
+        var _this = this;
+        this.heroService.addHero(this.hero).then(function (res) { return _this.updateData(); });
+    };
+    AddHeroComponent.prototype.updateData = function () {
         this.getHeroes();
         this.hero.id = null;
         this.hero.name = null;

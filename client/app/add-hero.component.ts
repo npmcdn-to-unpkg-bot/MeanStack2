@@ -28,7 +28,10 @@ export class AddHeroComponent implements OnInit{
   }
 
   addHero(){
-    this.heroService.addHero(this.hero);
+    this.heroService.addHero(this.hero).then(res => this.updateData());
+  }
+
+  updateData(){
     this.getHeroes();
     this.hero.id = null;
     this.hero.name = null;

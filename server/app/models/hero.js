@@ -1,11 +1,7 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 
-var heroSchema = new Schema({
+module.exports = mongoose.model('Heroes', {
     name: String,
     id: String,
     address : String
 });
-
-heroSchema.index({"$**" : "text"});
-module.exports = mongoose.model('Heroes', heroSchema);

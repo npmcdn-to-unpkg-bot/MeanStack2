@@ -7,7 +7,7 @@
   var map = {
     'app':                        'app', // 'dist',
     '@angular':                   'https://npmcdn.com/@angular',
-    'rxjs':                       'https://npmcdn.com/rxjs@5.0.0-beta.6'
+    'rxjs':                       'https://npmcdn.com/rxjs'
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {

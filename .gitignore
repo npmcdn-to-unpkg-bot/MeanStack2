@@ -1,5 +1,6 @@
-client/node_modules/
-server/node_modules/
-client/typings
+node_modules/
+typings/
 data/
+npm*
 client/npm*
+server/npm*

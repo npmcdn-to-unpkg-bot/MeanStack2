@@ -1,4 +1,5 @@
 var Heroes = require('./models/hero');
+var path = require("path");
 
 function getHeroes(res) {
     Heroes.find(function(err, heroes) {
@@ -68,4 +69,8 @@ module.exports = function(app) {
             res.json(hero);
         });
     });
+
+    app.get('*', function (req, res) {
+       res.sendFile(path.join(__dirname, '../../', '/client/index.html')); // load the single view file (angular will handle the page changes on the front-end)
+   });
 };
